@@ -1368,6 +1368,10 @@ impl Render for Dock {
                             Axis::Horizontal => this.w_full().h_full(),
                             Axis::Vertical => this.h_full().w_full(),
                         })
+                        .when_some(floating, |this, floating| {
+                            let inset = floating.content_inset();
+                            this.pt(inset).px(inset)
+                        })
                         .child(
                             entry
                                 .panel

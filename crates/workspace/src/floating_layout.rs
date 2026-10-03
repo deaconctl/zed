@@ -49,6 +49,13 @@ impl FloatingLayout {
             .shadow(ElevationIndex::ElevatedSurface.shadow(cx))
     }
 
+    /// The padding between a card's edge and its content. Without it, content
+    /// drawn flush against the card's top and sides (such as the first entry of
+    /// the project panel) is partially hidden by [`Self::corner_mask`].
+    pub fn content_inset(&self) -> Pixels {
+        self.radius / 2.
+    }
+
     /// The overlay that gives a card its rounded corners, to be added as the
     /// last child of the card itself.
     ///
